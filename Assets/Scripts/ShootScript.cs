@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootScript : MonoBehaviour
 {
-    public Rigidbody2D Arrow;
+    public Rigidbody2D Rock;
     public Transform ShootDirection;
     public Transform Player;
     Rigidbody2D rb;
@@ -21,7 +21,7 @@ public class ShootScript : MonoBehaviour
 
     void Start ()
     {
-        ArrowOrigin = GameObject.Find("ArrowOrigin").transform;
+        ArrowOrigin = GameObject.Find("ShotOrigin").transform;
         hasTurned = true;
         timeLeft = 2;
     }
@@ -29,22 +29,23 @@ public class ShootScript : MonoBehaviour
     void Update ()
     {
         flatRotation = ShootDirection.rotation.eulerAngles.z;
+        if (Input.GetButtonDown("FirePower"))
+        {
+            firePower = 100;
+            ShootForce();
+            Rigidbody2D ArrowClone = (Rigidbody2D)Instantiate(Rock, ArrowOrigin.position, Quaternion.Euler(0, 0, 27));
+            ArrowClone.AddForce(new Vector2(xForce * firePower, yForce * firePower));
+        }
        //if (Input.GetButtonDown("FirePower"))
        //{
+       //}
+       //if (Input.GetButtonUp("FirePower") && timeLeft > 0)
+       //{
+       //    firePower = ((2 - timeLeft) * 100) / 2;
        //    ShootForce();
        //    Rigidbody2D ArrowClone = (Rigidbody2D)Instantiate(Arrow, ArrowOrigin.position, Quaternion.Euler(0, 0, 27));
        //    ArrowClone.AddForce(new Vector2(xForce * firePower, yForce * firePower));
        //}
-        if (Input.GetButtonDown("FirePower"))
-        {
-        }
-        if (Input.GetButtonUp("FirePower") && timeLeft > 0)
-        {
-            firePower = ((2 - timeLeft) * 100) / 2;
-            ShootForce();
-            Rigidbody2D ArrowClone = (Rigidbody2D)Instantiate(Arrow, ArrowOrigin.position, Quaternion.Euler(0, 0, 27));
-            ArrowClone.AddForce(new Vector2(xForce * firePower, yForce * firePower));
-        }
 
         RotateShootDirection();
     }
@@ -61,6 +62,7 @@ public class ShootScript : MonoBehaviour
         if (Player.rotation.y == -1 && hasTurned)
         {
             adaptiveRotation = 90 + (90 - rotation);
+            ShootDirection.rotation = Quaternion.Euler(0, 0, adaptiveRotation);
             hasTurned = false;
         }
         else if (Player.rotation.y == -1 && Input.GetButton("FireDirectionUp") && adaptiveRotation >= 100)
@@ -68,7 +70,7 @@ public class ShootScript : MonoBehaviour
             adaptiveRotation -= 1;
             ShootDirection.rotation = Quaternion.Euler(0, 0, adaptiveRotation);
         }
-        else if ((Player.rotation.y == -1 && Input.GetButton("FireDirectionDown") && adaptiveRotation <= 180))
+        else if ((Player.rotation.y == -1 && Input.GetButton("FireDirectionDown") && adaptiveRotation <= 179))
         {
             adaptiveRotation += 1;
             ShootDirection.rotation = Quaternion.Euler(0, 0, adaptiveRotation);
@@ -77,6 +79,7 @@ public class ShootScript : MonoBehaviour
         if (Player.rotation.y == 0 && !hasTurned)
         {
             rotation = 90 - (adaptiveRotation - 90);
+            ShootDirection.rotation = Quaternion.Euler(0, 0, rotation);
             hasTurned = true;
         }
         else if (Input.GetButton("FireDirectionUp") && rotation <= 80 && Player.rotation.y == 0)
@@ -84,7 +87,7 @@ public class ShootScript : MonoBehaviour
             rotation += 1;
             ShootDirection.rotation = Quaternion.Euler(0, 0, rotation);
         }
-        else if (Input.GetButton("FireDirectionDown") && rotation >= 0 && Player.rotation.y == 0)
+        else if (Input.GetButton("FireDirectionDown") && rotation >= 1 && Player.rotation.y == 0)
         {
             rotation -= 1;
             ShootDirection.rotation = Quaternion.Euler(0, 0, rotation);

@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663937b2e360f59429946726b3c546fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Arrow: {fileID: 50230323266786410, guid: 2d2c4c3562abe4545b83b57be99ee019, type: 2}
+  Rock: {fileID: 50536024364014584, guid: 79bce83937e43d042843a359e671ca99, type: 2}
   ShootDirection: {fileID: 1245993386}
   Player: {fileID: 227777937}
 --- !u!1 &317781079
@@ -1322,7 +1322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041661116}
   m_Layer: 0
-  m_Name: ArrowOrigin
+  m_Name: ShotOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
