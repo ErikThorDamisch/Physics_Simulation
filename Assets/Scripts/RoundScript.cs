@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoundScript : MonoBehaviour
 {
     public bool whosTurn;
+    public bool NoneMove;
     ShootScript shootScript;
     ShootScriptPlayer2 shootScriptPlayer2;
     MoveScript moveScript1;
@@ -29,7 +30,14 @@ public class RoundScript : MonoBehaviour
 	
 	void Update ()
     {
-        if(whosTurn)
+        if (NoneMove)
+        {
+            shootScriptPlayer2.enabled = false;
+            shootScript.enabled = false;
+            moveScript2.enabled = false;
+            moveScript1.enabled = false;
+        }
+        else if(whosTurn)
         {
             shootScriptPlayer2.enabled = false;
             shootScript.enabled = true;

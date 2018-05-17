@@ -10,9 +10,7 @@ public class ShootScript : MonoBehaviour
     public Slider powerSlider;
     GameObject gameManager;
     RoundScript roundScript;
-    Rigidbody2D rb;
     Transform ShotOrigin;
-    int speed = 10;
     float rotation;
     float adaptiveRotation;
     bool hasTurned;
@@ -52,6 +50,7 @@ public class ShootScript : MonoBehaviour
             Rigidbody2D ArrowClone = (Rigidbody2D)Instantiate(Rock, ShotOrigin.position, Quaternion.Euler(0, 0, 0));
             ArrowClone.AddForce(new Vector2(xForce * firePower, yForce * firePower));
             roundScript.whosTurn = false;
+            roundScript.NoneMove = true;
             time = 0;
         }
     }

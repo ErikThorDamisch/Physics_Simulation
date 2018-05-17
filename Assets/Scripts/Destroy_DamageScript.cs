@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Destroy_DamageScript : MonoBehaviour
 {
+    RoundScript roundScript;
+    GameObject gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+        roundScript = gameManager.GetComponent<RoundScript>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
-            Destroy(this.gameObject, 5);
+            Destroy(this.gameObject, 0.5f);
+            roundScript.NoneMove = false;
         }
     }
 }
