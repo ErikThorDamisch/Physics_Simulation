@@ -297,6 +297,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Scripts\CamFollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Destroy_DamageScript.cs" />
     <Compile Include="Assets\Scripts\FollowRockCam.cs" />
