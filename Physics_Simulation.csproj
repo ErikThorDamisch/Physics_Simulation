@@ -302,11 +302,12 @@
     <Compile Include="Assets\Scripts\Destroy_DamageScript.cs" />
     <Compile Include="Assets\Scripts\FollowRockCam.cs" />
     <Compile Include="Assets\Scripts\MoveScript.cs" />
+    <Compile Include="Assets\Scripts\PauseMenuScript.cs" />
     <Compile Include="Assets\Scripts\RoundScript.cs" />
     <Compile Include="Assets\Scripts\ShootScript.cs" />
     <Compile Include="Assets\Scripts\ShootScriptPlayer2.cs" />
     <Compile Include="Assets\Scripts\TakeDamage.cs" />
-    <Compile Include="Assets\SpritesArchers\Scripts\Change_Sprite.cs" />
+    <Compile Include="Assets\Sprites\SpritesArchers\Scripts\Change_Sprite.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

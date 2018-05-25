@@ -12,6 +12,8 @@ public class TakeDamage : MonoBehaviour
     public Text hp2Text;
     public int healthP1;
     public int healthP2;
+    public Animator animator1;
+    public Animator animator2;
     RoundScript roundScript;
     GameObject gameManager;
     int damage;
@@ -23,7 +25,7 @@ public class TakeDamage : MonoBehaviour
         roundScript = gameManager.GetComponent<RoundScript>();
         healthP1 = 100;
         healthP2 = 100;
-        damage = 100;
+        damage = 10;
         MainMenuButton.SetActive(false);
 	}
 
@@ -31,21 +33,25 @@ public class TakeDamage : MonoBehaviour
     {
         if(healthP1 < 100)
         {
-            hp1Text.text = "Player 1:" + healthP1.ToString();
+            hp1Text.text = "Player 1: " + healthP1.ToString() + " HP";
         }
         else if(healthP2 < 100)
         {
-            hp2Text.text = "Player 2:" + healthP2.ToString();
+            hp2Text.text = "Player 2: " + healthP2.ToString() + " HP";
         }
 
         if(healthP1 <= 0)
         {
+            animator1.SetBool("IsDead", true);
+            Cursor.visible = true;
             MainMenuButton.SetActive(true);
             winText.text = "Player 2 Wins";
             roundScript.NoneMove = true;
         }
         else if(healthP2 <= 0)
         {
+            animator2.SetBool("IsDead", true);
+            Cursor.visible = true;
             MainMenuButton.SetActive(true);
             winText.text = "Player 1 Wins";
             roundScript.NoneMove = true;

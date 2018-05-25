@@ -7,17 +7,18 @@ public class ButtonHandler : MonoBehaviour
 {
     public void OnClickStartButton()
     {
-        Cursor.visible = false;
         SceneManager.LoadScene("LevelChoice");
     }
 
     public void OnClickStartLevel1()
     {
+        Cursor.visible = false;
         SceneManager.LoadScene("Level1");
     }
 
     public void OnClickStartLevel2()
     {
+        Cursor.visible = false;
         SceneManager.LoadScene("Level2");
     }
 

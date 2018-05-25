@@ -7,7 +7,6 @@ public class CamFollowPlayer : MonoBehaviour
     Camera cam;
     public Transform player;
     public Transform player2;
-    public GameObject Rock;
 
     GameObject gameManager;
     RoundScript roundScript;
@@ -33,12 +32,12 @@ public class CamFollowPlayer : MonoBehaviour
         if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             camSize -= 1;
-            cam.orthographicSize = Mathf.Clamp(camSize, 5, 25); ;
+            cam.orthographicSize = Mathf.Clamp(camSize, 10, 75); ;
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             camSize += 1;
-            cam.orthographicSize = Mathf.Clamp(camSize, 5, 25); ;
+            cam.orthographicSize = Mathf.Clamp(camSize, 10, 75); ;
         }
     }
 }

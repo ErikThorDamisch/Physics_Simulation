@@ -86,9 +86,11 @@ GameObject:
   - component: {fileID: 70395488355004626}
   - component: {fileID: 114030131478371984}
   - component: {fileID: 114821845129265118}
+  - component: {fileID: 70822617388970434}
+  - component: {fileID: 114863479593757094}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572459099469456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.255941, y: 4.05, z: 0}
+  m_LocalPosition: {x: -30.86, y: 8.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4875505998935366}
@@ -252,7 +254,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &70395488355004626
 CapsuleCollider2D:
@@ -269,6 +271,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.3, y: -0.4}
   m_Size: {x: 1.19, y: 3.06}
   m_Direction: 0
+--- !u!70 &70822617388970434
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572459099469456}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.3, y: -0.4}
+  m_Size: {x: 1.36, y: 3.06}
+  m_Direction: 0
 --- !u!95 &95045483425763322
 Animator:
   serializedVersion: 3
@@ -276,9 +293,9 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572459099469456}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6e3f960720f362448a9786f8b2ee3e3f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2bb6d4d31e4e72e468398f0c50d00fe0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -297,7 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5639fd123c8627844af23493cf48c3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 0.1
+  anim1: {fileID: 95045483425763322}
+  anim2: {fileID: 0}
 --- !u!114 &114821845129265118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,6 +331,26 @@ MonoBehaviour:
   Rock: {fileID: 50536024364014584, guid: 79bce83937e43d042843a359e671ca99, type: 2}
   ShootDirection: {fileID: 4875505998935366}
   powerSlider: {fileID: 0}
+--- !u!114 &114863479593757094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572459099469456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53226d7cdb64f44794aa50533ceb261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuButton: {fileID: 0}
+  winText: {fileID: 0}
+  dmgText: {fileID: 0}
+  hp1Text: {fileID: 0}
+  hp2Text: {fileID: 0}
+  healthP1: 0
+  healthP2: 0
+  animator1: {fileID: 95045483425763322}
+  animator2: {fileID: 0}
 --- !u!120 &120492639577002498
 LineRenderer:
   m_ObjectHideFlags: 1

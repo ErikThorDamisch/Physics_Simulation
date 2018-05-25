@@ -9,11 +9,13 @@ public class ShootScript : MonoBehaviour
     public Transform ShootDirection;
     public Slider powerSlider;
     GameObject gameManager;
+    GameObject cam;
     RoundScript roundScript;
     Transform ShotOrigin;
+    AudioSource audioS;
+    bool hasTurned;
     float rotation;
     float adaptiveRotation;
-    bool hasTurned;
     float flatRotation;
     float xForce;
     float yForce;
@@ -22,6 +24,8 @@ public class ShootScript : MonoBehaviour
 
     void Start ()
     {
+        cam = GameObject.Find("Main Camera");
+        audioS = cam.GetComponent<AudioSource>();
         ShotOrigin = GameObject.Find("ShotOrigin").transform;
         hasTurned = true;
         gameManager = GameObject.Find("GameManager");
@@ -47,6 +51,7 @@ public class ShootScript : MonoBehaviour
         {
             firePower = (time * 100) / 3;
             ShootForce();
+            audioS.Play();
             Rigidbody2D ArrowClone = (Rigidbody2D)Instantiate(Rock, ShotOrigin.position, Quaternion.Euler(0, 0, 0));
             ArrowClone.AddForce(new Vector2(xForce * firePower, yForce * firePower));
             roundScript.whosTurn = false;
